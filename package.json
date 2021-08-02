@@ -15,7 +15,6 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.6.3",
     "@types/jest": "^26.0.20",
-    "@types/node": "^12.19.15",
     "@types/react": "^16.14.3",
     "@types/react-dom": "^16.9.10",
     "@types/react-router": "^5.1.11",
@@ -66,7 +65,9 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "3.1.2"
+    "@capacitor/cli": "3.1.2",
+    "@types/node": "^16.4.10",
+    "craco-alias": "^3.0.1"
   },
   "description": "An Ionic project"
 }
