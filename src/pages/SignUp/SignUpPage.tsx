@@ -3,16 +3,16 @@ import { IonContent } from '@ionic/react';
 
 import { routerLinks } from '../../utils/helpers/router.helper'
 
-const SingUp: React.FC = () => {
+const SignUp: React.FC = () => {
 
    return(
       
       <IonContent>
-         
+         SignUp!!
       </IonContent>
       
        
    );
 };
 
-export default SingUp;
+export default SignUp;

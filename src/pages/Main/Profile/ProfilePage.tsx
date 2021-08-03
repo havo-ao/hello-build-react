@@ -6,7 +6,7 @@ const Profile: React.FC = () => {
    return(
       
       <IonContent>
-         
+         Profile
       </IonContent>
       
        

@@ -5,7 +5,8 @@ import { Redirect, Route } from 'react-router-dom';
 /* Pages */
 import MainPage from '../pages/Main/MainPage';
 import LoginPage from '../pages/Login/LoginPage';
-import SingUpPage from '../pages/SingUp/SingUpPage';
+import SingUpPage from '../pages/SignUp/SignUpPage';
+import ProfilePage from '../pages/Main/Profile/ProfilePage';
 
 /* Helpers */
 import { routerLinks } from '../utils/helpers/router.helper'
@@ -13,15 +14,15 @@ import { routerLinks } from '../utils/helpers/router.helper'
 const AppRouter = () => {
    return (
       <IonReactRouter>
-         <Route exact path={routerLinks.homepage} 
-            render={() => <MainPage />} 
-         />   
-         <Route exact path={routerLinks.login}>
-            <LoginPage />
-         </Route>
-         <Route exact path={routerLinks.singup} >
-            <SingUpPage />
-         </Route>
+         <IonRouterOutlet>
+            <Route path="/"><MainPage /></Route>
+            <Route exact path={routerLinks.login}>
+               <LoginPage />
+            </Route>
+            <Route exact path={routerLinks.signup} >
+               <SingUpPage />
+            </Route>
+         </IonRouterOutlet>
       </IonReactRouter>
    );
 }

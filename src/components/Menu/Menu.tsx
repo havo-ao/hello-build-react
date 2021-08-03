@@ -31,7 +31,7 @@ export const Menu: React.FC = () => (
 <>
    <IonMenu 
       side='start'
-      contentId='hellobuild-menu'
+      contentId='hellobuildMenu'
    >
       <IonHeader>
          <IonToolbar color='primary'>

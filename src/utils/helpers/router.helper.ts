@@ -2,7 +2,7 @@ export const routerLinks = {
    homepage: '/',
    login: '/login',
    logout: '/logout',
-   singup: '/singup',
+   signup: '/signup',
    profile: '/profile',
    profileRepos: '/profile/repos',
    profileReposFav: '/profile/repos/favorites'
