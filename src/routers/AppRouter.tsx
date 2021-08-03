@@ -15,7 +15,7 @@ const AppRouter = () => {
    return (
       <IonReactRouter>
          <IonRouterOutlet>
-            <Route path="/"><MainPage /></Route>
+            <Route path={routerLinks.homepage}><MainPage /></Route>
             <Route exact path={routerLinks.login}>
                <LoginPage />
             </Route>

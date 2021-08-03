@@ -1,0 +1,72 @@
+ion-input{
+   border: solid 1px #C6C6C6;
+   border-radius: 8px;
+   min-height: 45px;
+}
+
+input {
+   padding-left: 15px !important;
+}
+
+.login-content-bg{
+   --background: #fff url(../../components/layouts/img/background-mobile.png) no-repeat center center / cover !important;
+}
+
+.login-bg{
+   background: transparent url(../../components/layouts/img/bg-login.png) no-repeat center center / cover !important;
+   display: block;
+   width: 100vw;
+   height: 100vh;
+   padding: 2em;
+   max-width: 500px;
+   margin: auto;
+}
+
+.logo {
+   height: 30vh;
+   text-align: center;
+   padding-top: 10vh;
+}
+
+.logo img{
+   max-width: 250px;
+   width: 100%
+}
+
+.logo p {
+   margin: 0;
+   position: relative;
+   width: 100%;
+   font-size: 15px;
+   color: var(--ion-color-secondary);
+}
+
+.item-has-focus {
+   --full-highlight-height: 0;
+   align-self: unset;
+}
+
+.item-has-focus .label-floating {
+   transform: translateY(10%) scale(0.75) !important;
+   align-self: unset;
+}
+
+.item-has-value .label-floating {
+   transform: translateY(10%) scale(0.75) !important;
+}
+
+.ion-label-users {
+   z-index: 3;
+   margin-left: 10px !important;
+   background-color: #fff;
+   padding-left: 10px;
+   padding-right: 10px;
+   position: relative;
+   top: 10px;
+   opacity: unset !important;
+   align-self: unset !important;
+}
+
+.btn-weight{
+   font-weight: bold;
+}

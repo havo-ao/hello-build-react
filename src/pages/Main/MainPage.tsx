@@ -30,13 +30,13 @@ const Main: React.FC = () => {
                   </IonToolbar>
                </IonHeader>
                <IonRouterOutlet id="hellobuildMenu" className="main-page">
-                  <Route exact path='/profile'>
-                     <ProfilePage/> 
+                  <Route exact path={routerLinks.profile}>
+                     <ProfilePage/>
                   </Route>
-                  <Route exact path="/profile/repos"> 
+                  <Route exact path={routerLinks.profileRepos}> 
                      <ReposPage />
                   </Route>
-                  <Route exact path="/profile/repos/favorites">
+                  <Route exact path={routerLinks.profileReposFav}>
                      <ReposFavPage /> 
                   </Route>
                </IonRouterOutlet>
