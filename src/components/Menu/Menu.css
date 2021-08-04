@@ -13,3 +13,11 @@ ion-menu ion-icon ion-label{
 .build-menu-list {
    background-color: var(--ion-color-secondary) !important;
 }
+
+.selected {
+   --ion-item-background: #13263a !important;
+}
+
+.repose {
+   --ion-item-background: var(--ion-color-secondary) !important;
+}

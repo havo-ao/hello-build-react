@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonRow, IonTitle, IonToast } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonRow, IonTitle, IonToast, ViewLifeCycleManager } from '@ionic/react';
 
 import { colSizes, hbPage, toastPageInterface } from '../../../components/layouts/Page.template';
 
@@ -15,6 +15,7 @@ const Welcome: React.FC = () => {
          color: undefined
       }
    );
+   console.log('Pathname: ', window.location.pathname)
 
    return(
       
@@ -80,7 +81,7 @@ const Welcome: React.FC = () => {
                            In the upper right you will find a play button with a relaxing song recommended for development, if you want you can listen it while you review the test :)
                         </p>
                         <p>
-                           This test is also adapted for mobile devices. As it is a hybrid application of Ionic React, if you want, with a few lines in the terminal, you can deploy for Android and for iOs at once, and test this App as hybrid application on your phones.
+                           This test is also adapted for mobile devices. As it is a hybrid application of Ionic React, if you want, with a few lines in the terminal, you can deploy for Android and iOs at once, and test this App as hybrid application on your phones.
                         </p>
                         
                      </IonCardContent>

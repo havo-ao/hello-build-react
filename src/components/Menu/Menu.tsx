@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
    IonMenu, 
    IonHeader, 
@@ -33,8 +33,16 @@ import './Menu.css'
 // Template options
 import { menuTemplate } from './Menu.template'
 
-export const Menu: React.FC = () => (
-<>
+export const Menu: React.FC = () => {
+
+   const [selected, setSelected] = useState(window.location.pathname);
+   const [navigate, setNavigate] = useState(false)
+
+   useEffect(() => {
+      setSelected(window.location.pathname)
+   },[navigate]);
+
+   return (
    <IonMenu 
       side='start'
       contentId='hellobuildMenu'
@@ -49,70 +57,89 @@ export const Menu: React.FC = () => (
       </IonHeader>
       <IonContent color="secondary">
          <IonList className={menuTemplate.list.classes}>
-         <IonItem 
+         <IonItem
+            onClick={()=> {
+               setNavigate(navigate? false : true)
+            }}
+            className={selected == routerLinks.welcome ? 'selected' : 'repose'} 
             lines='none'
             routerLink={routerLinks.welcome} 
-            color={menuTemplate.item.color}
+
          >
                <IonIcon 
                   color={menuTemplate.icon.color} 
                   slot="start" 
                   icon={happyOutline}
                />
-               <IonLabel>Welcome</IonLabel>
+               <IonLabel color="light">Welcome</IonLabel>
             </IonItem >
-            <IonItem 
+            <IonItem
+               onClick={()=> {
+                  setNavigate(navigate? false : true)
+               }}
+               className={selected == routerLinks.profile ? 'selected' : 'repose'} 
                lines='none'  
                routerLink={routerLinks.profile} 
-               color={menuTemplate.item.color}
+   
             >
                <IonIcon 
                   color={menuTemplate.icon.color} 
                   slot="start" 
                   icon={personOutline}
                />
-               <IonLabel>Profile</IonLabel>
+               <IonLabel color="light">Profile</IonLabel>
             </IonItem >
-            <IonItem 
+            <IonItem
+               onClick={()=> {
+                  setNavigate(navigate? false : true)
+               }}
+               className={selected == routerLinks.profileRepos ? 'selected' : 'repose'} 
                lines='none'  
                routerLink={routerLinks.profileRepos} 
-               color={menuTemplate.item.color}
+   
             >
                <IonIcon
                   color={menuTemplate.icon.color} 
                   slot="start" 
                   icon={fileTrayStackedOutline}
                />
-               <IonLabel>Repositories</IonLabel>
+               <IonLabel color="light">Repositories</IonLabel>
             </IonItem >
-            <IonItem 
+            <IonItem
+               onClick={()=> {
+                  setNavigate(navigate? false : true)
+               }}
+               className={selected == routerLinks.profileReposFav ? 'selected' : 'repose'} 
                lines='none'  
                routerLink={routerLinks.profileReposFav} 
-               color={menuTemplate.item.color}
+   
             >
                <IonIcon 
                   color={menuTemplate.icon.color} 
                   slot="start" 
                   icon={starOutline}
                />
-               <IonLabel>Favorite repositories</IonLabel>
+               <IonLabel color="light">Favorite repositories</IonLabel>
             </IonItem >
-            <IonItem 
+            <IonItem
+               onClick={()=> {
+                  
+               }}
                lines='none'  
                routerLink={routerLinks.logout} 
-               color={menuTemplate.item.color}
+               className="repose"
             >
                <IonIcon 
                   color={menuTemplate.icon.color} 
                   slot="start" 
                   icon={closeCircleOutline}
                />
-                  <IonLabel>Log out</IonLabel>
+                  <IonLabel color="light">Log out</IonLabel>
             </IonItem >
           </IonList>
         </IonContent>
       </IonMenu>
-  </>
-);
+  );
+};
 
 export default Menu;
