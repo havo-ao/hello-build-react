@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { IonButton, IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonIcon, IonRow, IonTitle, IonToast } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonIcon, IonItem, IonItemDivider, IonLabel, IonList, IonLoading, IonRow, IonTitle, IonToast, useIonViewWillEnter } from '@ionic/react';
 import axios from 'axios';
 import { colSizes, hbPage, toastPageInterface } from '../../../../components/layouts/Page.template';
 
 // @ts-ignore
 
 import '../../../../components/layouts/css/layout.css';
-import { logoGithub } from 'ionicons/icons';
+import { callOutline, fileTrayStackedOutline, logoGithub, starOutline, trashOutline } from 'ionicons/icons';
 import { RouteComponentProps, useParams } from 'react-router-dom';
 
+import { contentRepositories } from '../../../../utils/content/repos.content'
 
 const Repos: React.FC= () => {
 
@@ -20,38 +21,44 @@ const Repos: React.FC= () => {
          color: undefined
       }
    );
+   const [showLoading, setShowLoading] = useState(false);
+   const [content, setContent] = useState(false)
 
    const queryString = window.location.search;
    const urlParams = new URLSearchParams(queryString);
    const code = urlParams.get('code')
 
-   console.log('githubcodeis: ',code)
-
    const clientID = '965ff11ff06aeab4dfa0'
    const clientSecret = 'a91d71b4564edcc4ed0681b78a20372dad6f8257'
    const redirectUri = 'http://localhost:3000/profile/repos/'
 
-   let accessToken=''
+   // let accessToken=''
 
-   if (code) {
-      // axios({
-      //    method: 'post',
-      //    url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${code}&redirect_uri=${redirectUri}`,
-      //    headers: {
-      //          accept: 'application/json',
-      //          "Access-Control-Allow-Origin": "http://localhost:3000",
-      //          "Access-Control-Allow-Credentials": "true"
-      //    }
-      //  }).then((response) => {
-      //    accessToken = response.data.access_token
-      //    console.log('Token: ',accessToken)
-      //  }).catch((err) => console.log({ message: err.message }));
+   // if (code) {
+   //    // axios({
+   //    //    method: 'post',
+   //    //    url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${code}&redirect_uri=${redirectUri}`,
+   //    //    headers: {
+   //    //          accept: 'application/json',
+   //    //          "Access-Control-Allow-Origin": "http://localhost:3000",
+   //    //          "Access-Control-Allow-Credentials": "true"
+   //    //    }
+   //    //  }).then((response) => {
+   //    //    accessToken = response.data.access_token
+   //    //    console.log('Token: ',accessToken)
+   //    //  }).catch((err) => console.log({ message: err.message }));
 
-   }
-
+   // }
 
    const reposHandler = async () => {
-     
+      setShowLoading(true);
+      setTimeout(
+         () => {
+            console.log('Im ready!!!!!')
+            setContent(true);
+         }, 
+         1500
+       );
    }
 
 
@@ -105,23 +112,68 @@ const Repos: React.FC= () => {
                >
                   <IonCard className={hbPage.card.classes}>
                      <IonCardTitle className={hbPage.cardTitle.classes}>
-                        Title
+                        GitHub Library
                      </IonCardTitle>
                      <IonCardContent className={hbPage.cardContent.classes}>
-                        <IonButton
-                           color="dark"
-                           href={`https://github.com/login/oauth/authorize?client_id=${clientID}&scope=repo&redirect_uri=${redirectUri}`}
-                           onClick={()=> {
-                              reposHandler();
-                           }}>
+                        <div className="ion-text-center">
+                           <IonButton
+                              color="dark"
+                              onClick={()=> {
+                                 setContent(false);
+                                 reposHandler();
+                              }}
+                           >
                               <IonIcon slot="start" icon={logoGithub}></IonIcon>
-                           Get my Repositories
-                        </IonButton>
+                              {!content ? 'Get my Repositories' : 'Refresh list'}
+                           </IonButton>
+                        </div>
+                        <IonList>
+                           <IonItemDivider>Repository list</IonItemDivider>
+                           <IonGrid>
+                              <IonRow className="ion-padding-start">
+                              { !content 
+                                    ?  <IonLabel className="ion-padding">Repositories have not been loaded.</IonLabel>
+                                    :  contentRepositories.map( (repo: any, index: any) =>
+                                    
+                                    <IonCol id={'repo-'+index} key={index} sizeXs="12" sizeSm="12" sizeMd="12" sizeLg="12"  sizeXl="6" className="ion-padding-end">
+                                       <IonItem className="ion-item-repo" lines="none" button>
+                                          <IonLabel>    
+                                             <h2>
+                                                <IonIcon className="ion-margin-end" size="small" slot="start" icon={fileTrayStackedOutline}></IonIcon>
+                                                {Object(repo)['name']}
+                                             </h2>
+                                             <h3>
+                                                {Object(repo)['description']}
+                                             </h3>
+                                             <p>{Object(repo)['langs']}</p>
+                                          </IonLabel>
+                                          <IonButton 
+                                             onClick={() => { 
+                                                
+                                             }}
+                                             fill="clear"
+                                             size="default"
+                                             color="warning"
+                                          >
+                                             <IonIcon slot="icon-only" icon={starOutline} />
+                                          </IonButton>
+                                       </IonItem>
+                                    </IonCol>
+                                 )}
+                              </IonRow>
+                           </IonGrid>
+                        </IonList>
                      </IonCardContent>
                   </IonCard>
                </IonCol>
             </IonRow>
          </IonGrid>
+         <IonLoading
+            isOpen={showLoading}
+            onDidDismiss={() => setShowLoading(false)}
+            message={'Loading...'}
+            duration={2500}
+         />
       </IonContent>
       
        

@@ -7,6 +7,7 @@ import { toastPageInterface } from '../../components/layouts/Page.template';
 
 
 import './SignUpPage.css'
+import { useHistory } from 'react-router';
 
 
 const SignUp: React.FC = () => {
@@ -24,6 +25,8 @@ const SignUp: React.FC = () => {
          color: undefined
       }
    );
+
+   const history = useHistory();
 
    const signUpHandler = () => {
       console.log('email:', email, ' password: ', password);
@@ -47,6 +50,7 @@ const SignUp: React.FC = () => {
                color: 'success'
             }
          )
+         history.push(routerLinks.welcome);
       }
    }
 

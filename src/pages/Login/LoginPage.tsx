@@ -4,6 +4,7 @@ import { IonAlert, IonButton, IonCol, IonContent, IonInput, IonItem, IonLabel, I
 import { routerLinks } from '../../utils/helpers/router.helper'
 
 import './LoginPage.css'
+import { useHistory } from 'react-router';
 
 
 const Login: React.FC = () => {
@@ -14,6 +15,8 @@ const Login: React.FC = () => {
    const [passwordError, setPasswordError] = useState(false);
    const [errors, setErrors] = useState([]);
    const [showAlertLogin, setShowAlertLogin] = useState(false);
+
+   const history = useHistory();
 
    const loginHandler = () => {
       console.log('email:', email, ' password: ', password);
@@ -29,6 +32,7 @@ const Login: React.FC = () => {
 
       if(password && email){
          console.log('login actions')
+         history.push(routerLinks.welcome);
       }
    }
 
