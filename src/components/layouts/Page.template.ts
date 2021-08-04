@@ -31,10 +31,10 @@ export const hbPage = {
       sizes: colSizes,
    },
    card:{
-      classes: 'ion-no-padding ion-padding-bottom',
+      classes: 'ion-padding',
    },
    cardTitle:{
-      classes: 'ion-padding',
+      classes: 'ion-no-padding ion-padding-bottom',
    },
    cardContent: {
       classes: 'ion-no-padding'

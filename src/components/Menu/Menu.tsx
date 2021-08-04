@@ -51,7 +51,7 @@ export const Menu: React.FC = () => (
          <IonList className={menuTemplate.list.classes}>
          <IonItem 
             lines='none'
-            routerLink={routerLinks.homepage} 
+            routerLink={routerLinks.welcome} 
             color={menuTemplate.item.color}
          >
                <IonIcon 

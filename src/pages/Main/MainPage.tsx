@@ -8,6 +8,7 @@ import { routerLinks } from '../../utils/helpers/router.helper'
 import Menu from '../../components/Menu/Menu';
 
 /* Pages */
+import WelcomePage from './Welcome/WelcomePage';
 import ProfilePage from './Profile/ProfilePage';
 import ReposPage from './Profile/Repos/ReposPage';
 import ReposFavPage from './Profile/Repos/Favorites/FavoritesPage';
@@ -43,6 +44,9 @@ const Main: React.FC = () => {
                   </IonToolbar>
                </IonHeader>
                <IonRouterOutlet id="hellobuildMenu" className="main-page">
+                  <Route exact path={routerLinks.welcome}>
+                     <WelcomePage/>
+                  </Route>
                   <Route exact path={routerLinks.profile}>
                      <ProfilePage/>
                   </Route>
@@ -51,6 +55,9 @@ const Main: React.FC = () => {
                   </Route>
                   <Route exact path={routerLinks.profileReposFav}>
                      <ReposFavPage /> 
+                  </Route>
+                  <Route exact path={routerLinks.homepage}>
+                     <Redirect to={routerLinks.welcome}/>
                   </Route>
                </IonRouterOutlet>
             </IonPage>

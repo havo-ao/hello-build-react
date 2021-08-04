@@ -5,7 +5,7 @@ import { colSizes, hbPage, toastPageInterface } from '../../../components/layout
 
 import '../../../components/layouts/css/layout.css';
 
-const Profile: React.FC = () => {
+const Welcome: React.FC = () => {
 
    const [mounted, setMounted] = useState(false);
    const [profileToast, setProfileToast] = useState<toastPageInterface>(
@@ -23,7 +23,7 @@ const Profile: React.FC = () => {
          <IonGrid className="top-bar" >
             <IonRow>
                <IonTitle className="ion-text-start top-bar-title">
-                  User profile
+                  Welcome!
                </IonTitle>
                <IonToast
                   isOpen={profileToast.show}
@@ -81,4 +81,4 @@ const Profile: React.FC = () => {
    );
 };
 
-export default Profile;
+export default Welcome;
