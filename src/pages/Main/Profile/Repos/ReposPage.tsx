@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonRow, IonTitle, IonToast } from '@ionic/react';
-
+import { IonButton, IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonIcon, IonRow, IonTitle, IonToast } from '@ionic/react';
+import axios from 'axios';
 import { colSizes, hbPage, toastPageInterface } from '../../../../components/layouts/Page.template';
 
-import '../../../../components/layouts/css/layout.css';
+// @ts-ignore
 
-const Repos: React.FC = () => {
+import '../../../../components/layouts/css/layout.css';
+import { logoGithub } from 'ionicons/icons';
+import { RouteComponentProps, useParams } from 'react-router-dom';
+
+
+const Repos: React.FC= () => {
 
    const [mounted, setMounted] = useState(false);
    const [profileToast, setProfileToast] = useState<toastPageInterface>(
@@ -15,6 +20,40 @@ const Repos: React.FC = () => {
          color: undefined
       }
    );
+
+   const queryString = window.location.search;
+   const urlParams = new URLSearchParams(queryString);
+   const code = urlParams.get('code')
+
+   console.log('githubcodeis: ',code)
+
+   const clientID = '965ff11ff06aeab4dfa0'
+   const clientSecret = 'a91d71b4564edcc4ed0681b78a20372dad6f8257'
+   const redirectUri = 'http://localhost:3000/profile/repos/'
+
+   let accessToken=''
+
+   if (code) {
+      // axios({
+      //    method: 'post',
+      //    url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${code}&redirect_uri=${redirectUri}`,
+      //    headers: {
+      //          accept: 'application/json',
+      //          "Access-Control-Allow-Origin": "http://localhost:3000",
+      //          "Access-Control-Allow-Credentials": "true"
+      //    }
+      //  }).then((response) => {
+      //    accessToken = response.data.access_token
+      //    console.log('Token: ',accessToken)
+      //  }).catch((err) => console.log({ message: err.message }));
+
+   }
+
+
+   const reposHandler = async () => {
+     
+   }
+
 
    return(
       
@@ -69,7 +108,15 @@ const Repos: React.FC = () => {
                         Title
                      </IonCardTitle>
                      <IonCardContent className={hbPage.cardContent.classes}>
-                        Content!!!
+                        <IonButton
+                           color="dark"
+                           href={`https://github.com/login/oauth/authorize?client_id=${clientID}&scope=repo&redirect_uri=${redirectUri}`}
+                           onClick={()=> {
+                              reposHandler();
+                           }}>
+                              <IonIcon slot="start" icon={logoGithub}></IonIcon>
+                           Get my Repositories
+                        </IonButton>
                      </IonCardContent>
                   </IonCard>
                </IonCol>

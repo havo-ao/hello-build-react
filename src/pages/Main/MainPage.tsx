@@ -1,5 +1,6 @@
 import React from 'react';
-import { Redirect, Route, RouteComponentProps, useParams } from 'react-router';
+import { Redirect, RouteComponentProps } from 'react-router';
+import { Route, useParams } from "react-router-dom";
 import { IonContent, IonSplitPane, IonRouterOutlet, IonButtons, IonHeader, IonImg, IonMenuButton, IonMenuToggle, IonPage, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 
 import Player from '../../components/AudioPlayer/AudioPlayer'
@@ -50,9 +51,8 @@ const Main: React.FC = () => {
                   <Route exact path={routerLinks.profile}>
                      <ProfilePage/>
                   </Route>
-                  <Route exact path={routerLinks.profileRepos}> 
-                     <ReposPage />
-                  </Route>
+                  <Route exact path={routerLinks.profileRepos} component={ReposPage} /> 
+                  <Route exact path={routerLinks.profileRepos+'/:code'} component={ReposPage} /> 
                   <Route exact path={routerLinks.profileReposFav}>
                      <ReposFavPage /> 
                   </Route>
