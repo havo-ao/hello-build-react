@@ -26,6 +26,9 @@ export const sizeParser = (
 export const colSizes = sizeParser({ xs: 12, sm: 10, md: 8, lg: 8, xl: 6 });
 
 export const hbPage = {
+   toast: {
+      classes: 'toast-text'
+   },
    col: {
       classes: 'ion-no-padding',
       sizes: colSizes,

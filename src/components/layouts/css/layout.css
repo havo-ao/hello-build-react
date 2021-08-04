@@ -2,6 +2,10 @@
    --background: #fff url(../img/background-mobile.png) no-repeat center center / cover !important;
 }
 
+.toast-text {
+   font-size: 18px;
+}
+
 .top-bar {
    position: sticky;
    z-index: 1;

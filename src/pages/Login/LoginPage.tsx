@@ -15,6 +15,23 @@ const Login: React.FC = () => {
    const [errors, setErrors] = useState([]);
    const [showAlertLogin, setShowAlertLogin] = useState(false);
 
+   const loginHandler = () => {
+      console.log('email:', email, ' password: ', password);
+      //setShowAlertLogin(true)
+
+      if(!email){
+         setEmailError(true);
+      }
+
+      if(!password){
+         setPasswordError(true);
+      }
+
+      if(password && email){
+         console.log('login actions')
+      }
+   }
+
    function errorMessages() {
       const errorMessages = errors.map((err: { message: any; }) => '* ' + err.message)
       const stringErrorMessages = errorMessages.join('<Br>');
@@ -54,6 +71,7 @@ const Login: React.FC = () => {
                            onIonChange={
                               (e) => {
                                  setEmail((e.target as HTMLInputElement).value)
+                                 setEmailError(false);
                               }
                            }
                            required
@@ -62,7 +80,7 @@ const Login: React.FC = () => {
                      </IonItem>
                      {emailError && <IonText color="danger">
                         <p className="ion-padding-start ion-no-margin">
-                        Please type the email
+                        Please enter a valid email 
                         </p>
                      </IonText>}
 
@@ -78,14 +96,17 @@ const Login: React.FC = () => {
                            name="password"
                            type="password" 
                            value={password} 
-                           onIonChange={e => setPassword((e.target as HTMLInputElement).value)}
+                           onIonChange={e => {
+                              setPassword((e.target as HTMLInputElement).value);
+                              setPasswordError(false);
+                           }}
                         >
                         </IonInput>
                      </IonItem>
 
                      {passwordError && <IonText color="danger">
                         <p className="ion-padding-start ion-no-margin">
-                        Please input a valid password
+                        Please enter a valid password 
                         </p>
                      </IonText>}
                   </IonList>
@@ -96,14 +117,14 @@ const Login: React.FC = () => {
                               className="ion-margin-top btn-weight"
                               expand="block"
                               onClick={()=> {
-                                 console.log('email:', email, ' password: ', password);
-                                 setShowAlertLogin(true)
+                                 loginHandler();
                               }}
                         >
                               Login
                         </IonButton>
                         <IonButton 
                               fill="clear" 
+                              routerLink={routerLinks.signup}
                               color="secondary"
                               className="ion-margin-top"
                               expand="block"
