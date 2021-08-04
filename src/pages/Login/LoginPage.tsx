@@ -41,7 +41,7 @@ const Login: React.FC = () => {
                      <IonItem lines="none">
                         <IonLabel 
                            className="ion-label-users"
-                           position="floating" color="dark"
+                           position="floating" color="secondary"
                         >
                            Email
                         </IonLabel>
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
                         <IonLabel 
                            className="ion-label-users" 
                            position="floating" 
-                           color="dark"
+                           color="secondary"
                         >
                            Password
                         </IonLabel>
@@ -95,6 +95,10 @@ const Login: React.FC = () => {
                               color="secondary" 
                               className="ion-margin-top btn-weight"
                               expand="block"
+                              onClick={()=> {
+                                 console.log('email:', email, ' password: ', password);
+                                 setShowAlertLogin(true)
+                              }}
                         >
                               Login
                         </IonButton>

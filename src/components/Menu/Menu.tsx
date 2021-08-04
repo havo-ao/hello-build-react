@@ -14,9 +14,15 @@ import {
 } from '@ionic/react';
 import { 
    closeCircle, 
+   closeCircleOutline, 
    fileTrayStacked, 
+   fileTrayStackedOutline, 
+   happy, 
+   happyOutline, 
    person, 
-   star
+   personOutline, 
+   star,
+   starOutline
 } from 'ionicons/icons';
 
 // helpers
@@ -51,7 +57,7 @@ export const Menu: React.FC = () => (
                <IonIcon 
                   color={menuTemplate.icon.color} 
                   slot="start" 
-                  icon={person}
+                  icon={happyOutline}
                />
                <IonLabel>Welcome</IonLabel>
             </IonItem >
@@ -63,7 +69,7 @@ export const Menu: React.FC = () => (
                <IonIcon 
                   color={menuTemplate.icon.color} 
                   slot="start" 
-                  icon={person}
+                  icon={personOutline}
                />
                <IonLabel>Profile</IonLabel>
             </IonItem >
@@ -75,7 +81,7 @@ export const Menu: React.FC = () => (
                <IonIcon
                   color={menuTemplate.icon.color} 
                   slot="start" 
-                  icon={fileTrayStacked}
+                  icon={fileTrayStackedOutline}
                />
                <IonLabel>Repositories</IonLabel>
             </IonItem >
@@ -87,7 +93,7 @@ export const Menu: React.FC = () => (
                <IonIcon 
                   color={menuTemplate.icon.color} 
                   slot="start" 
-                  icon={star}
+                  icon={starOutline}
                />
                <IonLabel>Favorite repositories</IonLabel>
             </IonItem >
@@ -99,7 +105,7 @@ export const Menu: React.FC = () => (
                <IonIcon 
                   color={menuTemplate.icon.color} 
                   slot="start" 
-                  icon={closeCircle}
+                  icon={closeCircleOutline}
                />
                   <IonLabel>Log out</IonLabel>
             </IonItem >
