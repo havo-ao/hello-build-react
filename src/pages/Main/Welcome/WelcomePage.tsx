@@ -69,7 +69,20 @@ const Welcome: React.FC = () => {
                         Title
                      </IonCardTitle>
                      <IonCardContent className={hbPage.cardContent.classes}>
-                        Content!!!
+                        <p>Welcome to my React test!</p>
+                        <p>
+                           First of all, thanks to you for giving me the opportunity to demonstrate my capabilities, mainly to Susana Mejía who contacted me.
+                        </p>
+                        <p>
+                           I really enjoy my job and I love what I do, therefore I hope my test has enough for you to enjoy too.
+                        </p>
+                        <p>
+                           In the upper right you will find a play button with a relaxing song recommended for development, if you want you can listen it while you review the test :)
+                        </p>
+                        <p>
+                           This test is also adapted for mobile devices. As it is a hybrid application of Ionic React, if you want, with a few lines in the terminal, you can deploy for Android and for iOs at once, and test this App as hybrid application on your phones.
+                        </p>
+                        
                      </IonCardContent>
                   </IonCard>
                </IonCol>

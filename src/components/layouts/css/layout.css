@@ -13,3 +13,21 @@
    padding-top: 15px;
    text-transform: capitalize;
 }
+
+.top-bar-title {
+   padding-left: 15px !important;
+}
+
+.card-content-text {
+   font-size: 16px;
+   text-align: justify;
+}
+
+.card-content-text p{
+   font-size: 16px;
+   padding-bottom: 15px;
+}
+
+.card-title-text {
+   font-size: 20px;
+}

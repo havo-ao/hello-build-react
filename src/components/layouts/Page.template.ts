@@ -34,9 +34,9 @@ export const hbPage = {
       classes: 'ion-padding',
    },
    cardTitle:{
-      classes: 'ion-no-padding ion-padding-bottom',
+      classes: 'ion-no-padding ion-padding-bottom card-title-text',
    },
    cardContent: {
-      classes: 'ion-no-padding'
+      classes: 'ion-no-padding card-content-text'
    }
 }
