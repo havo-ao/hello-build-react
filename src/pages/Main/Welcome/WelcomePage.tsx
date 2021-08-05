@@ -68,10 +68,9 @@ const Welcome: React.FC = () => {
                >
                   <IonCard className={hbPage.card.classes}>
                      <IonCardTitle className={hbPage.cardTitle.classes}>
-                        Title
+                     Welcome to my React test!
                      </IonCardTitle>
                      <IonCardContent className={hbPage.cardContent.classes}>
-                        <p>Welcome to my React test!</p>
                         <p>
                            First of all, thanks to you for giving me the opportunity to demonstrate my capabilities, mainly to Susana Mejía who contacted me.
                         </p>

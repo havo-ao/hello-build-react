@@ -25,6 +25,9 @@ import {
    starOutline
 } from 'ionicons/icons';
 
+/* Context */
+import useAuth from '../../auth/useAuth';
+
 // helpers
 import { routerLinks } from '../../utils/helpers/router.helper'
 
@@ -32,15 +35,19 @@ import './Menu.css'
 
 // Template options
 import { menuTemplate } from './Menu.template'
+import { useHistory } from 'react-router';
 
 export const Menu: React.FC = () => {
 
    const [selected, setSelected] = useState(window.location.pathname);
    const [navigate, setNavigate] = useState(false)
+   const history = useHistory()
 
    useEffect(() => {
       setSelected(window.location.pathname)
    },[navigate]);
+
+   const { logout } = useAuth();
 
    return (
    <IonMenu 
@@ -123,10 +130,10 @@ export const Menu: React.FC = () => {
             </IonItem >
             <IonItem
                onClick={()=> {
-                  
+                  logout();
+                  history.push(routerLinks.login);
                }}
-               lines='none'  
-               routerLink={routerLinks.logout} 
+               lines='none'
                className="repose"
             >
                <IonIcon 

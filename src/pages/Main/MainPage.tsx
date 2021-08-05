@@ -3,8 +3,6 @@ import { Redirect, RouteComponentProps, Switch, useHistory } from 'react-router'
 import { Route, useParams } from "react-router-dom";
 import { IonContent, IonSplitPane, IonRouterOutlet, IonButtons, IonHeader, IonImg, IonMenuButton, IonMenuToggle, IonPage, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 
-import Player from '../../components/AudioPlayer/AudioPlayer'
-import ReactAudioPlayer from 'react-audio-player';
 import { routerLinks } from '../../utils/helpers/router.helper'
 import Menu from '../../components/Menu/Menu';
 
@@ -23,9 +21,9 @@ const Main: React.FC = () => {
 
    const history = useHistory();
 
-   const { user } = useAuth();
+   const { user, isLogged } = useAuth();
 
-   if (!user.id) return <Redirect to={routerLinks.login} />
+   //if (!user.id) return <Redirect to={routerLinks.login} />
 
    return( 
       <IonContent>
@@ -40,20 +38,11 @@ const Main: React.FC = () => {
                         <IonMenuToggle>
                         </IonMenuToggle>
                         <IonTitle>Hello Build Main</IonTitle>
-                        {/* <ReactAudioPlayer
-                           src='assets/mp3/Polygram.mp3'
-                           autoPlay
-                           className="hb-audio-player"
-                           controls
-                           volume={0.2}
-                           controlsList="play"
-                           
-                        /> */}
                         <HavoAudioPlayer url="assets/mp3/Polygram.mp3"/>
                   </IonToolbar>
                </IonHeader>
                
-                  { user.id ?
+                  { isLogged() ?
                      <IonRouterOutlet id="hellobuildMenu" className="main-page">
                         <Switch>
                            <Route exact path={routerLinks.homepage}>

@@ -29,7 +29,6 @@ const SignUp: React.FC = () => {
    const history = useHistory();
 
    const { user } = useAuth();
-   if (user.id) return <Redirect to={routerLinks.welcome} />
 
    const signUpHandler = () => {
       console.log('email:', email, ' password: ', password);

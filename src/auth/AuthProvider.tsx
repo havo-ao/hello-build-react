@@ -1,11 +1,23 @@
 import {createContext, useState} from 'react';
-import { Interface } from 'readline';
 
-interface prop {
-   user: { id: string | null}
+interface AuthContext {
+   user: null | { 
+      id: string | null
+   };
+   isLogged: () => boolean;
+   login: () => void;
+   logout: () => void;
 }
 
-export const AuthContext = createContext<prop>({ user: {id: null} });
+export const AuthContext = createContext<AuthContext>(
+   { user: 
+      {
+         id: null
+      },
+      isLogged: () => false,
+      login: ()=> {},
+      logout: ()=> {},
+   });
 
 interface Props {
    children?: React.ReactChild
@@ -13,13 +25,19 @@ interface Props {
 
 const AuthProvider = (props: Props) => {
 
-   const [user, setUser] = useState({id: 'useridstring12345'});
+   const [user, setUser] = useState<any>(null);
    //const [user, setUser] = useState({id: null});
 
-   console.log(user)
+   const login = () => setUser({id: '1'});
+   const logout = () => setUser(null);
+
+   const isLogged = () => !!user;
 
    const contextValue= {
       user,
+      isLogged,
+      login,
+      logout
    }
 
    return (

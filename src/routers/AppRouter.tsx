@@ -13,36 +13,31 @@ import useAuth from '../auth/useAuth';
 
 const AppRouter = () => {
 
-   const { user } = useAuth();
+   const { user, isLogged } = useAuth();
 
-   //if (!user.id) return <Redirect to={routerLinks.login} />
-
-   console.log('User properties: ', user);
    return (
       <IonReactRouter>
-         
-            { !user.id ?
-               <IonRouterOutlet>
-                  <Switch>
-                     <Route exact path={routerLinks.login}>
-                        <LoginPage />
-                     </Route>
-                     <Route exact path={routerLinks.signup} >
-                        <SingUpPage />
-                     </Route>
-                     <Redirect from="*" to={routerLinks.login} />
-                  </Switch>
-               </IonRouterOutlet>
-               :
-               <IonRouterOutlet>
-                  <Switch>
-                     <Route path={routerLinks.homepage}>
-                        <MainPage />
-                     </Route>
-                  </Switch>
-               </IonRouterOutlet>
-            }
-            
+         { !isLogged() ?
+            <IonRouterOutlet>
+               <Switch>
+                  <Route exact path={routerLinks.login}>
+                     <LoginPage />
+                  </Route>
+                  <Route exact path={routerLinks.signup} >
+                     <SingUpPage />
+                  </Route>
+                  <Redirect from="*" to={routerLinks.login} />
+               </Switch>
+            </IonRouterOutlet>
+            :
+            <IonRouterOutlet>
+               <Switch>
+                  <Route path={routerLinks.homepage}>
+                     <MainPage />
+                  </Route>
+               </Switch>
+            </IonRouterOutlet>
+         }
       </IonReactRouter>
    );
 }

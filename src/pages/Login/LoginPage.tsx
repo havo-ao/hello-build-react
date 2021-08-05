@@ -18,9 +18,8 @@ const Login: React.FC = () => {
    const [showAlertLogin, setShowAlertLogin] = useState(false);
    const history = useHistory();
 
-   const { user } = useAuth();
+   const { user, login } = useAuth();
 
-   if (user.id) return <Redirect to={routerLinks.welcome} />
 
    const loginHandler = () => {
       console.log('email:', email, ' password: ', password);
@@ -36,6 +35,7 @@ const Login: React.FC = () => {
 
       if(password && email){
          console.log('login actions')
+         login();
          history.push(routerLinks.welcome);
       }
    }
