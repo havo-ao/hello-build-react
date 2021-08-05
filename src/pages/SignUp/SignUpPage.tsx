@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { IonAlert, IonButton, IonCol, IonContent, IonInput, IonItem, IonLabel, IonList, IonRow, IonText, IonTitle, IonToast } from '@ionic/react';
-
 import { routerLinks } from '../../utils/helpers/router.helper'
-
 import { toastPageInterface } from '../../components/layouts/Page.template';
-
 
 import './SignUpPage.css'
 import { Redirect, useHistory } from 'react-router';
-import useAuth from '../../auth/useAuth';
 
+/* Auth Context */
+import useAuth from '../../auth/useAuth';
 
 const SignUp: React.FC = () => {
 
@@ -28,12 +26,9 @@ const SignUp: React.FC = () => {
    );
    const history = useHistory();
 
-   const { user } = useAuth();
+   const { login } = useAuth();
 
    const signUpHandler = () => {
-      console.log('email:', email, ' password: ', password);
-      //setShowAlertSignUp(true)
-      
 
       if(!email){
          setEmailError(true);
@@ -44,7 +39,6 @@ const SignUp: React.FC = () => {
       }
 
       if(password && email){
-         console.log('SignUp actions')
          setSignUpToast(
             {
                show:true, 
@@ -52,7 +46,13 @@ const SignUp: React.FC = () => {
                color: 'success'
             }
          )
-         history.push(routerLinks.welcome);
+         setTimeout(
+            () => {
+               login()
+               history.push(routerLinks.welcome);
+            }, 
+            2500
+          );
       }
    }
 
@@ -106,7 +106,7 @@ const SignUp: React.FC = () => {
                color="primary" 
                className="ion-text-center title-sign-up"
             >
-               Sign Un Now! It's free :)
+               {signUpToast ? "Welcome!!!" : "Sign Un Now! It's free :)"}
             </IonTitle>
             <form>
                   <IonList>
