@@ -51,8 +51,8 @@ const SignUp: React.FC = () => {
                login()
                history.push(routerLinks.welcome);
             }, 
-            2500
-          );
+            3000
+         );
       }
    }
 
@@ -106,7 +106,7 @@ const SignUp: React.FC = () => {
                color="primary" 
                className="ion-text-center title-sign-up"
             >
-               {signUpToast ? "Welcome!!!" : "Sign Un Now! It's free :)"}
+               {signUpToast.show ? "Welcome!!! Logging in" : "Sign Un Now! It's free :)"}
             </IonTitle>
             <form>
                   <IonList>

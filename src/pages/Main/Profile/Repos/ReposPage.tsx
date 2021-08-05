@@ -28,8 +28,8 @@ const Repos: React.FC= () => {
    const urlParams = new URLSearchParams(queryString);
    const code = urlParams.get('code')
 
-   const clientID = '965ff11ff06aeab4dfa0'
-   const clientSecret = 'a91d71b4564edcc4ed0681b78a20372dad6f8257'
+   const clientID = ''
+   const clientSecret = ''
    const redirectUri = 'http://localhost:3000/profile/repos/'
 
    // let accessToken=''

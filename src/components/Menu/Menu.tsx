@@ -130,9 +130,15 @@ export const Menu: React.FC = () => {
             </IonItem >
             <IonItem
                onClick={()=> {
-                  logout();
-                  history.push(routerLinks.login);
+                  setTimeout(
+                     () => {
+                        logout()
+                        history.push(routerLinks.welcome);
+                     }, 
+                     1000
+                  );
                }}
+               button
                lines='none'
                className="repose"
             >
