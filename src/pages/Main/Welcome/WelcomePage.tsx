@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonRow, IonTitle, IonToast, ViewLifeCycleManager } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCardTitle, IonCol, IonContent, IonGrid, IonIcon, IonRow, IonTitle, IonToast, ViewLifeCycleManager } from '@ionic/react';
 
 import { colSizes, hbPage, toastPageInterface } from '../../../components/layouts/Page.template';
 
 import '../../../components/layouts/css/layout.css';
+import { ban, logoGithub, logoLinkedin } from 'ionicons/icons';
 
 const Welcome: React.FC = () => {
 
@@ -79,11 +80,56 @@ const Welcome: React.FC = () => {
                         </p>
                         <p>
                            In the upper right you will find a play button with a relaxing song recommended for development, if you want you can listen it while you review the test :)
+                           Don't worry! Volume is at 50%.
                         </p>
                         <p>
                            This test is also adapted for mobile devices. As it is a hybrid application of Ionic React, if you want, with a few lines in the terminal, you can deploy for Android and iOs at once, and test this App as hybrid application on your phones.
                         </p>
                         
+                     </IonCardContent>
+                     <IonCardTitle className={hbPage.cardTitle.classes}>
+                        GitHub
+                     </IonCardTitle>
+                     <IonCardContent className={hbPage.cardContent.classes}>
+                        <IonButton
+                           color="dark"
+                           className="ion-margin-bottom"
+                           expand="full"
+                           target="_blank"
+                           href="https://github.com/havo-ao/hello-build-react"
+                        >
+                           <IonIcon slot="start" icon={logoGithub}></IonIcon>
+                           This Proyect on GitHub
+                        </IonButton>
+                     </IonCardContent>
+                     <IonCardTitle className={hbPage.cardTitle.classes}>
+                        Social Networks
+                     </IonCardTitle>
+                     <IonCardContent className={hbPage.cardContent.classes}>
+                        <IonButton
+                           color="secondary"
+                           className="ion-margin-bottom"
+                           expand="full"
+                           target="_blank"
+                           href="https://www.linkedin.com/in/acorozco/"
+                        >
+                           <IonIcon slot="start" icon={logoLinkedin}></IonIcon>
+                           My LinkedIn Profile
+                        </IonButton>
+                     </IonCardContent>
+                     <IonCardTitle className={hbPage.cardTitle.classes}>
+                        Features
+                     </IonCardTitle>
+                     <IonCardContent className={hbPage.cardContent.classes}>
+                        <IonButton
+                           color="primary"
+                           className="ion-margin-bottom"
+                           expand="full"
+                           routerLink="/404"
+                        >
+                           <IonIcon slot="start" icon={ban}></IonIcon>
+                           404 Page
+                        </IonButton>
                      </IonCardContent>
                   </IonCard>
                </IonCol>
