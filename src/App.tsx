@@ -2,10 +2,11 @@ import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
-import Page from './pages/Page';
-
 /* Router */
 import AppRouter from './routers/AppRouter'
+
+/* Context */
+import AuthProvider from './auth/AuthProvider'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -30,7 +31,9 @@ const App: React.FC = () => {
 
   return (
    <IonApp>
-      <AppRouter />
+      <AuthProvider>
+         <AppRouter />
+      </AuthProvider>
    </IonApp>
   );
 };

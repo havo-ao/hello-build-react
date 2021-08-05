@@ -7,7 +7,8 @@ import { toastPageInterface } from '../../components/layouts/Page.template';
 
 
 import './SignUpPage.css'
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
+import useAuth from '../../auth/useAuth';
 
 
 const SignUp: React.FC = () => {
@@ -25,8 +26,10 @@ const SignUp: React.FC = () => {
          color: undefined
       }
    );
-
    const history = useHistory();
+
+   const { user } = useAuth();
+   if (user.id) return <Redirect to={routerLinks.welcome} />
 
    const signUpHandler = () => {
       console.log('email:', email, ' password: ', password);

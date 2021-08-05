@@ -4,7 +4,8 @@ import { IonAlert, IonButton, IonCol, IonContent, IonInput, IonItem, IonLabel, I
 import { routerLinks } from '../../utils/helpers/router.helper'
 
 import './LoginPage.css'
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
+import useAuth from '../../auth/useAuth';
 
 
 const Login: React.FC = () => {
@@ -15,8 +16,11 @@ const Login: React.FC = () => {
    const [passwordError, setPasswordError] = useState(false);
    const [errors, setErrors] = useState([]);
    const [showAlertLogin, setShowAlertLogin] = useState(false);
-
    const history = useHistory();
+
+   const { user } = useAuth();
+
+   if (user.id) return <Redirect to={routerLinks.welcome} />
 
    const loginHandler = () => {
       console.log('email:', email, ' password: ', password);
